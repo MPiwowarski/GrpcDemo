@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+option csharp_namespace = "GrpcServer";
+
+service Interview {
+	rpc GetInterview(InterviewLookupModel) returns (stream InterviewModel);
+}
+
+message InterviewLookupModel {
+	string interviewId = 1;
+}
+
+message InterviewModel {
+	string id = 1;
+	string answerSet = 2;
+	string interviewUrl = 3;
+}

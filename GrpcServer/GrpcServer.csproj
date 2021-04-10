@@ -5,10 +5,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="10mbanswerset.txt" />
     <None Remove="Protos\customers.proto" />
+    <None Remove="Protos\interview.proto" />
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Include="10mbanswerset.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Protobuf Include="Protos\interview.proto" GrpcServices="Server" />
     <Protobuf Include="Protos\customers.proto" GrpcServices="Server" />
     <Protobuf Include="Protos\greet.proto" GrpcServices="Server" />
   </ItemGroup>

@@ -17,7 +17,10 @@ namespace GrpcServer
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddGrpc();
+            services.AddGrpc(options =>
+            {
+                options.MaxSendMessageSize = 100 * 1024 * 1024; // 100 MB
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -34,6 +37,7 @@ namespace GrpcServer
             {
                 endpoints.MapGrpcService<GreeterService>();
                 endpoints.MapGrpcService<CustomerService>();
+                endpoints.MapGrpcService<InterviewService>();
 
                 endpoints.MapGet("/", async context =>
                 {
